@@ -1,0 +1,25 @@
+{% extends data.outerLayout %}
+{% block beforeMain %}
+<ul class="tabs">
+  {% if data.page %}
+  <ul class="accordion">
+    {% for ancestor in data.page._ancestors %}
+      <li><a href="{{ ancestor._url }}">{{ ancestor.title }}</a>
+        {% if ancestor._children.length %}
+          <ul>
+            {% for child in ancestor._children %}
+              <li><a href="{{ child._url }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</ul>
+{% endblock %}
+{% block afterMain %}
+  <footer>
+    Copyright 2017, Remarkable Company
+  </footer>
+{% endblock %}

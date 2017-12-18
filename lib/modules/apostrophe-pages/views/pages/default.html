@@ -1,0 +1,19 @@
+
+{% block main %}
+
+  <div class="main-content">
+    {{ apos.singleton(data.global, 'footer', 'apostrophe-rich-text', {
+      toolbar: [ 'Bold', 'Italic', 'Styles', 'Link', 'Unlink' ]
+    }) }}
+  </div>
+  
+  {% if data.page %}
+  <ul class="breadcrumbs">
+    {% for ancestor in data.page._ancestors %}
+      <li><a href="{{ ancestor._url }}">{{ ancestor.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
+
+{% extends "layout.html" %}
